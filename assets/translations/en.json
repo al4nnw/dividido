@@ -1,0 +1,11 @@
+{
+  "appName": "Dividido",
+  "createGroup": {
+    "title": "Create group",
+    "groupNameLabel": "Enter the group name",
+    "groupNameHint": "Birthday party",
+    "create": "Create group",
+    "addMember": "Add member",
+    "memberSectionLabel": "Members"
+  }
+}
