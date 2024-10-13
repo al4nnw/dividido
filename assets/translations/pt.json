@@ -1,6 +1,6 @@
 {
   "appName": "Dividido",
-  "createGroup": {
+  "groupPage": {
     "title": "Criar grupo",
     "groupNameLabel": "Digite o nome do grupo",
     "groupNameHint": "Festa de aniversário",

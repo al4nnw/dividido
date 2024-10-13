@@ -13,7 +13,7 @@ class MembersList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            tr("createGroup.memberSectionLabel"),
+            tr("groupPage.memberSectionLabel"),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 16),

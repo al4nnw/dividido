@@ -15,7 +15,6 @@ class _GroupsFilterState extends State<GroupsFilter> {
       decoration: BoxDecoration(
         // border top and bottom 1px solid grey
         border: Border(
-          top: BorderSide(width: 1.0, color: borderColors),
           bottom: BorderSide(width: 1.0, color: borderColors),
         ),
       ),

@@ -1,11 +1,28 @@
 {
-  "appName": "Dividido",
-  "createGroup": {
-    "title": "Create group",
-    "groupNameLabel": "Enter the group name",
-    "groupNameHint": "Birthday party",
-    "create": "Create group",
-    "addMember": "Add member",
-    "memberSectionLabel": "Members"
+  "groupPage": {
+    "title": "Group",
+    "groupNameLabel": "Group Name",
+    "groupNameHint": "Enter group name",
+    "emptyName": "Please enter a group name",
+    "emptyDescription": "Please enter a group description",
+    "groupDescriptionLabel": "Description",
+    "groupDescriptionHint": "Enter group description",
+    "create": "Create Group",
+    "createSuccess": "Group created successfully!",
+    "addExpense": "Add Expense",
+    "update": "Update Group",
+    "createError": "Failed to create group.",
+    "updateSuccess": "Group updated successfully!",
+    "updateError": "Failed to update group.",
+    "viewMembers": "View Members",
+    "viewExpenses": "View Expenses"
+  },
+  "membersPage": {
+    "title": "Members",
+    "content": "Members list will be displayed here."
+  },
+  "expensesPage": {
+    "title": "Expenses",
+    "content": "Expenses list will be displayed here."
   }
 }
