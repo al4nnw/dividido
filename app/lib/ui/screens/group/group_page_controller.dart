@@ -3,7 +3,6 @@ import 'package:dividido/models/group.dart';
 import 'package:dividido/models/meta.dart';
 import 'package:dividido/repository/contracts/group_repository.ct.dart';
 import 'package:dividido/repository/implementations/group_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GroupPageController {
   final GroupRepositoryCT _repository = GroupRepository();
