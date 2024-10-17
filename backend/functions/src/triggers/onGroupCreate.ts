@@ -7,7 +7,8 @@ export const onGroupCreate = functions.firestore
 	.document("groups/{groupId}")
 	.onCreate(async (snapshot, context) => {
 		const data = snapshot.data();
-		const ownerId = data.meta.createdBy;
+		const meta = data.meta;
+
 		const groupId = context.params.groupId;
 
 		const groupMembersRef = admin
@@ -15,5 +16,8 @@ export const onGroupCreate = functions.firestore
 			.collection("groups")
 			.doc(groupId)
 			.collection("members");
-		await groupMembersRef.add({ userId: ownerId });
+
+		await groupMembersRef
+			.doc(meta.createdBy)
+			.set({ userId: meta.createdBy, meta });
 	});

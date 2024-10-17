@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dividido/const/external_response.dart';
 import 'package:dividido/models/group.dart';
-import 'package:dividido/models/member.dart';
 import 'package:dividido/repository/contracts/group_repository.ct.dart';
 
 class GroupRepository implements GroupRepositoryCT {
@@ -16,20 +15,6 @@ class GroupRepository implements GroupRepositoryCT {
     try {
       final doc = await firestore.collection('groups').add(group.toMap());
       createdGroupId = doc.id;
-
-      /// Add itself to the group
-      final member = Member(id: group.meta.createdBy, meta: group.meta);
-      try {
-        await firestore
-            .collection('groups')
-            .doc(doc.id)
-            .collection('members')
-            .doc(group.meta.createdBy)
-            .set(member.toMap());
-      } catch (e) {
-        log("[GroupRepository] [createGroup] - Error adding creator to group: $e");
-        return ExternalResponse.error;
-      }
 
       return ExternalResponse.success;
     } catch (e) {
