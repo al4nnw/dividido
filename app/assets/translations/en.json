@@ -7,7 +7,7 @@
     "emptyDescription": "Please enter a group description",
     "groupDescriptionLabel": "Description",
     "groupDescriptionHint": "Enter group description",
-    "create": "Create Group",
+    "create": "Fill...",
     "createSuccess": "Group created successfully!",
     "addExpense": "Add Expense",
     "update": "Update Group",

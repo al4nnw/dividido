@@ -1,5 +1,6 @@
 import 'package:dividido/ui/screens/group/group_page_providers.dart';
 import 'package:dividido/ui/screens/group/widgets/group_form.dart';
+import 'package:dividido/ui/screens/group/widgets/group_header.dart';
 import 'package:dividido/ui/widgets/header.dart';
 import 'package:dividido/ui/widgets/input_field.dart';
 import 'package:dividido/ui/widgets/rounded_fab.dart';
@@ -39,10 +40,7 @@ class _GroupPageState extends ConsumerState<GroupPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Header(
-              title: tr('groupPage.create'),
-              showBackButton: true,
-            ),
+            const GroupHeader(),
             if (shouldShowForm)
               GroupForm(
                 nameController: nameController,
@@ -78,6 +76,13 @@ class _GroupPageState extends ConsumerState<GroupPage> {
         creatorId: userId, // Replace with actual user ID
       );
       ref.read(justCreatedGroupProvider.notifier).state = true;
+
+      // Set groupId if not null
+      final groupId = groupController.groupId;
+
+      if (groupId != null) {
+        ref.read(currentGroupIdProvider.notifier).state = groupId;
+      }
       ref.read(creatingGroupProvider.notifier).state = false;
       _showMessage(tr('groupPage.createSuccess'));
     } catch (e) {

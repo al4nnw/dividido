@@ -3,6 +3,7 @@ import 'package:dividido/ui/screens/group/group_page_providers.dart';
 import 'package:dividido/ui/screens/home/widgets/groups_list.dart';
 import 'package:dividido/ui/screens/routes/group_navigator.dart';
 import 'package:dividido/ui/widgets/header.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'widgets/groups_filter.dart';
@@ -12,6 +13,8 @@ class Home extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -23,13 +26,15 @@ class Home extends ConsumerWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Header(title: 'Dividido'),
-          GroupsFilter(),
+          const Header(title: 'Dividido'),
+          const GroupsFilter(),
           Expanded(
-            child: GroupsList(),
+            child: GroupsList(
+              idToSearchFor: userId,
+            ),
           ),
         ],
       ),

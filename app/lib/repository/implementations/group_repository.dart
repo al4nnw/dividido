@@ -51,8 +51,6 @@ class GroupRepository implements GroupRepositoryCT {
 
   @override
   Future<Group?> getGroup(String groupId) async {
-    /// Get last 5 members
-
     try {
       final group = await firestore.collection('groups').doc(groupId).get();
       return Group.fromMap(group.id, group.data() as Map<String, dynamic>);

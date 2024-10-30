@@ -1,6 +1,11 @@
+import 'dart:developer';
+
+import 'package:dividido/utils/setup_emulators.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,10 +15,27 @@ import 'ui/screens/sign_in/sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
+
+  final shouldUseEmulator = dotenv.getBool('USE_EMULATORS', fallback: false);
+
   await EasyLocalization.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  if (shouldUseEmulator) {
+    log("Using emulators");
+    await setupEmulators();
+  }
+
+  await FirebaseAppCheck.instance.activate(
+    // Set androidProvider to `AndroidProvider.debug`
+    androidProvider: AndroidProvider.debug,
+  );
+
   runApp(
     EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('pt')],
